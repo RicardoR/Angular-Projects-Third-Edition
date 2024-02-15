@@ -1,6 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, Injector, Signal } from '@angular/core';
 import { Weather } from '../weather';
 import { WeatherService } from './weather.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-weather',
@@ -10,8 +11,11 @@ import { WeatherService } from './weather.service';
   styleUrl: './weather.component.scss'
 })
 export class WeatherComponent {
-  weather =signal<Weather|null>(null);
+  private injector = inject(Injector)
+  weather!: Signal<Weather|undefined>;
   private weatherService = inject(WeatherService);
   
-  search(city: string) {}
+  search(city: string): void {
+    this.weather = toSignal(this.weatherService.getWeather(city), {injector: this.injector});
+  }
 }
