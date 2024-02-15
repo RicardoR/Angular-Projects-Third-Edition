@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WeatherComponent } from './weather.component';
-import SpyObj = jasmine.SpyObj;
 import { WeatherService } from './weather.service';
 import { of } from 'rxjs';
 import { dummyWeather } from './mocks/weather-mock';
-import { C } from '@angular/cdk/keycodes';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('WeatherComponent', () => {
   let component: WeatherComponent;
@@ -15,7 +15,7 @@ describe('WeatherComponent', () => {
   beforeEach(async () => {
     let spyObj = jasmine.createSpyObj('WeatherService', ['getWeather']);
     await TestBed.configureTestingModule({
-      imports: [WeatherComponent],
+      imports: [WeatherComponent, HttpClientTestingModule, BrowserAnimationsModule],
       providers: [{provide: WeatherService, useValue: spyObj  }]
     })
     .compileComponents();

@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { WeatherService } from './features/weather/weather.service';
+import { Component } from '@angular/core';
+import { WeatherComponent } from './features/weather/weather.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [],
+  imports: [
+    WeatherComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
