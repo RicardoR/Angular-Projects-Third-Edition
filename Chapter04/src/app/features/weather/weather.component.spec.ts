@@ -36,4 +36,15 @@ describe('WeatherComponent', () => {
     component.search('Valladolid');
     expect(component.weather()).toEqual(dummyWeather);
   });
+
+  it('should contain the info when we retrieve data', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector("mat-card-header")).toBeNull();
+    
+    component.search('valladolid');
+    fixture.detectChanges();
+    const newCompiled = fixture.nativeElement as HTMLElement;
+    expect(newCompiled.querySelector("mat-card-header")).toBeTruthy();
+  });
 });
