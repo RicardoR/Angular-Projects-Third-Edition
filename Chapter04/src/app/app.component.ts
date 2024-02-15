@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { WeatherService } from './features/weather/weather.service';
 
 @Component({
   selector: 'app-root',
