@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Weather } from '../weather';
+import { Weather } from './weather';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,9 @@ export class WeatherService {
   private apiUrl = 'https://api.openweathermap.org/data/2.5/';
   private apiKey = '';
   constructor() {
-    this.httpClient.get('./assets/.secrets', { responseType: 'text' })
-        .subscribe(api => this.apiKey = api);
+    this.httpClient
+      .get<{ apiKey : string }>('./assets/secrets.json')
+      .subscribe((api) => (this.apiKey = api.apiKey));
   }
 
   getWeather(city: string): Observable<Weather> {

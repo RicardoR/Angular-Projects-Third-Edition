@@ -1,4 +1,4 @@
-﻿import { Weather } from '../../weather';
+﻿import { Weather } from '../weather';
 
 export const dummyWeather: Weather = {
     weather: [
