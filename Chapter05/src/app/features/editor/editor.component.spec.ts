@@ -11,7 +11,7 @@ describe('EditorComponent', () => {
       imports: [EditorComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(EditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +19,11 @@ describe('EditorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the ngx-wig component', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('ngx-wig')).toBeTruthy();
   });
 });
