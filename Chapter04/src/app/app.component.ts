@@ -5,15 +5,17 @@ import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, switchMap, map } from 'rxjs';
 import { ReloadService } from './reload.service';
 import { WeatherComponent } from './features/weather/weather.component';
+import { HeaderComponent } from "./features/weather/header/header.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    WeatherComponent
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [
+        WeatherComponent,
+        HeaderComponent
+    ]
 })
 export class AppComponent implements OnInit {
   private updates = inject(SwUpdate);
