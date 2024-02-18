@@ -36,4 +36,11 @@ describe('WeatherService', () => {
 
     req.flush(dummyWeather);
   });
+
+  it('should call for getting the apiKey', () => {
+    const req = httpMock.expectOne('./assets/secrets.json');
+    expect(req.request.method).toBe('GET');
+
+    req.flush({apikey: 'dummyApikey'});
+  })
 });

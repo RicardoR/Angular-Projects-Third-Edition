@@ -22,7 +22,7 @@ describe('WeatherComponent', () => {
 
     weatherServiceSpy = TestBed.inject(WeatherService) as jasmine.SpyObj<WeatherService>;
     weatherServiceSpy.getWeather.and.returnValue(of(dummyWeather))
-    
+
     fixture = TestBed.createComponent(WeatherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -34,6 +34,7 @@ describe('WeatherComponent', () => {
 
   it('should get the weather data when calling service', () => {
     component.search('Valladolid');
+    expect(weatherServiceSpy.getWeather).toHaveBeenCalledWith('Valladolid');
     expect(component.weather()).toEqual(dummyWeather);
   });
 
@@ -41,7 +42,7 @@ describe('WeatherComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector("mat-card-header")).toBeNull();
-    
+
     component.search('valladolid');
     fixture.detectChanges();
     const newCompiled = fixture.nativeElement as HTMLElement;
