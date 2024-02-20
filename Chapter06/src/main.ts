@@ -6,6 +6,7 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
+(window as Record<string, any>)['CESIUM_BASE_URL'] = '/assets/cesium/';
 
 if (environment.production) {
   enableProdMode();

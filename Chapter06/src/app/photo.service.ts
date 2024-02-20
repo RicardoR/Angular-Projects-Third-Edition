@@ -35,12 +35,10 @@ export class PhotoService {
     longitude: number
   ): Promise<{ name: string; lat: number; long: number }> {
     const name = new Date().getUTCMilliseconds().toString();
-    const promiseToReturn = new Promise<SavePhotoResult>((resolve) => {
+    return new Promise<SavePhotoResult>((resolve) => {
       setTimeout(() => {
-        resolve({ name, lat: latitude, long: longitude });
+        resolve({name, lat: latitude, long: longitude});
       }, 1000);
     });
-
-    return promiseToReturn;
   }
 }
