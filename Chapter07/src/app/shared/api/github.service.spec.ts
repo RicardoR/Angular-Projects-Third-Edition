@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { GithubService } from './github.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { exampleUser } from '../mocks/user-mocks';
 
-fdescribe('GithubService', () => {
+describe('GithubService', () => {
   let service: GithubService;
   let httpMock: HttpTestingController;
   

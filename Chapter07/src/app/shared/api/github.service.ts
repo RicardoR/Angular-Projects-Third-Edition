@@ -7,16 +7,15 @@ import { User } from '../domain/user';
   providedIn: 'root'
 })
 export class GithubService {
-  private httpClient = inject(HttpClient);
+  private http = inject(HttpClient);
   private username = 'ricardo-roguez';
   private apiUrl = 'https://api.github.com';
-  constructor() { }
   
   getUserName(): WritableSignal<string> {
     return signal<string>(this.username);
   }
   
   getUser(): Observable<User> {
-    throw new Error('Method not implemented');
+    return this.http.get<User>(`${this.apiUrl}/users/${this.username}`);
   }
 }
