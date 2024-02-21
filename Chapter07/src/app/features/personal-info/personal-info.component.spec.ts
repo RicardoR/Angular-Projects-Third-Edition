@@ -37,9 +37,9 @@ describe('PersonalInfoComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.card-title')?.textContent).toBe(exampleUser.name);
-    expect(compiled.querySelector('.card-text')?.textContent).toBe(exampleUser.bio);
-    expect(compiled.querySelector('.location-data')?.textContent).toBe(exampleUser.location);
-    expect(compiled.querySelector('.followers-data')?.textContent).toBe(exampleUser.followers);
-    expect(compiled.querySelector('a')?.getAttribute('href')).toBe(exampleUser.blog);
+    expect(compiled.querySelector('.card-text')?.textContent?.trim()).toBe(exampleUser.bio);
+    expect(compiled.querySelector('.location-data')?.textContent?.trim()).toBe(exampleUser.location);
+    expect(compiled.querySelector('.followers-data')?.textContent?.trim()).toBe(exampleUser.followers);
+    expect(compiled.querySelector('.personal-blog')?.getAttribute('href')).toBe(exampleUser.blog);
   });
 });

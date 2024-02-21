@@ -1,1 +1,20 @@
-<p>personal-info works!</p>
+<div class="card">
+    <img [src]="userData().avatar_url" class="card-img-top" alt="{{userData().name}} photo">
+    <div class="card-body">
+        <h5 class="card-title">{{userData().name}}</h5>
+        <p class="card-text">{{userData().bio}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item location-data" title="Location">
+            <i class="bi-geo me-2"></i>{{userData().location}}
+        </li>
+        <li class="list-group-item followers-data" title="Followers">
+            <i class="bi-people me-2"></i>{{userData().followers}}
+        </li>
+    </ul>
+    <div class="card-body">
+        <a href="https://www.twitter.com/{{userData().twitter_username}}"
+           class="card-link">Twitter</a>
+        <a [href]="userData().blog" class="card-link personal-blog">Personal blog</a>
+    </div>
+</div>

@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GithubService } from '../../shared/api/github.service';
-import { User } from '../../shared/domain/user';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { User } from '../../shared/domain/user';
 
 @Component({
   selector: 'app-personal-info',
@@ -12,5 +12,5 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class PersonalInfoComponent {
   private ghService = inject(GithubService);
-  userData = toSignal(this.ghService.getUser());
+  userData = toSignal(this.ghService.getUser(), {initialValue: {} as User});
 }
