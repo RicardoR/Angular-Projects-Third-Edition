@@ -17,11 +17,11 @@ describe('PersonalInfoComponent', () => {
       providers: [{ provide: GithubService, useValue: ghServiceSpy }]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(PersonalInfoComponent);
-    component = fixture.componentInstance;
+
     githubService = TestBed.inject(GithubService) as jasmine.SpyObj<GithubService>;
     githubService.getUser.and.returnValue(of(exampleUser));
+    fixture = TestBed.createComponent(PersonalInfoComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
