@@ -2,17 +2,18 @@ import { TestBed } from '@angular/core/testing';
 
 import { GithubService } from './github.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { exampleUser } from '../mocks/user-mocks';
 
-describe('GithubService', () => {
+fdescribe('GithubService', () => {
   let service: GithubService;
-  let httpTestingController: HttpTestingController;
+  let httpMock: HttpTestingController;
   
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(GithubService);
-    httpTestingController = TestBed.inject(HttpTestingController);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -22,5 +23,16 @@ describe('GithubService', () => {
   it('should return the github username ', () => {
     const username = service.getUserName();
     expect(username()).toBe('ricardo-roguez');
+  });
+
+  it('should retrieve the user data', () => {
+    const apiUrl = 'https://api.github.com/users/ricardo-roguez';
+    service.getUser().subscribe(user => {
+      expect(user).toEqual(exampleUser);
+    });
+    
+    const request = httpMock.expectOne(req => req.url === apiUrl);
+    expect(request.request.method).toBe('GET');
+    request.flush(exampleUser);
   });
 });
