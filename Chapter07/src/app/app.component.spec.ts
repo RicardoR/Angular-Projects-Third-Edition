@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'gh-portfolio' title`, () => {
+  it(`should have the username value`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('gh-portfolio');
+    expect(app.username).toEqual('ricardo-roguez');
   });
 
-  it('should render title', () => {
+  it('should render the link to the repo', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, gh-portfolio');
+    expect(compiled.querySelector('a')?.getAttribute('href')).toBe('https://github.com/ricardo-roguez');
   });
 });
