@@ -32,4 +32,14 @@ describe('PersonalInfoComponent', () => {
   it('should retrieve the user data', () => {
     expect(component.userData()).toEqual(exampleUser);
   });
+
+  it('should display the info in the view', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.card-title')?.textContent).toBe(exampleUser.name);
+    expect(compiled.querySelector('.card-text')?.textContent).toBe(exampleUser.bio);
+    expect(compiled.querySelector('.location-data')?.textContent).toBe(exampleUser.location);
+    expect(compiled.querySelector('.followers-data')?.textContent).toBe(exampleUser.followers);
+    expect(compiled.querySelector('a')?.getAttribute('href')).toBe(exampleUser.blog);
+  });
 });
