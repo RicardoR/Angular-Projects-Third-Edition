@@ -21,6 +21,6 @@ export class GithubService {
   }
 
   getRepos(): Observable<Repository[]> {
-    throw new Error('Method not implemented');
+    return this.http.get<Repository[]>(`${this.userUrl}/repos`);
   }
 }
