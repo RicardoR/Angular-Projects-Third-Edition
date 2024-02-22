@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { GithubService } from './github.service';
 import { exampleUser } from '../mocks/user-mocks';
+import { mockRepositories } from '../mocks/repository-list.mock';
 
 describe('GithubService', () => {
   let service: GithubService;
@@ -34,5 +35,16 @@ describe('GithubService', () => {
     const request = httpMock.expectOne(req => req.url === apiUrl);
     expect(request.request.method).toBe('GET');
     request.flush(exampleUser);
+  });
+  
+  it('should retrieve the repos data', () => {
+    const apiUrl = 'https://api.github.com/users/ricardo-roguez/repos';
+    service.getRepos().subscribe(repositoryList => {
+      expect(repositoryList).toEqual(mockRepositories);
+    });
+    
+    const request = httpMock.expectOne(req => req.url === apiUrl);
+    expect(request.request.method).toBe('GET');
+    request.flush(mockRepositories);
   });
 });

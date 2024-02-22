@@ -2,6 +2,7 @@ import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../domain/user';
+import { Repository } from '../domain/repository';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,17 @@ import { User } from '../domain/user';
 export class GithubService {
   private http = inject(HttpClient);
   private username = 'ricardo-roguez';
-  private apiUrl = 'https://api.github.com';
+  private userUrl = `https://api.github.com/users/${this.username}`;
   
   getUserName(): WritableSignal<string> {
     return signal<string>(this.username);
   }
   
   getUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/users/${this.username}`);
+    return this.http.get<User>(this.userUrl);
+  }
+
+  getRepos(): Observable<Repository[]> {
+    throw new Error('Method not implemented');
   }
 }
