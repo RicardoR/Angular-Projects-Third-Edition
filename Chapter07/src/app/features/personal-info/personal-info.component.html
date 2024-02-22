@@ -1,5 +1,5 @@
 <div class="card">
-    <img [src]="userData().avatar_url" class="card-img-top" alt="{{userData().name}} photo">
+    <img [ngSrc]="userData().avatar_url" class="card-img-top" alt="{{userData().name}} photo">
     <div class="card-body">
         <h5 class="card-title">{{userData().name}}</h5>
         <p class="card-text">{{userData().bio}}</p>
