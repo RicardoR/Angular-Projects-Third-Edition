@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { PersonalInfoComponent } from './features/personal-info/personal-info.component';
 import { RepositoriesComponent } from "./features/repositories/repositories.component";
+import { OrganizationsComponent } from "./features/organizations/organizations.component";
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,8 @@ import { RepositoriesComponent } from "./features/repositories/repositories.comp
     imports: [
         NgOptimizedImage,
         PersonalInfoComponent,
-        RepositoriesComponent
+        RepositoriesComponent,
+        OrganizationsComponent
     ]
 })
 export class AppComponent {
