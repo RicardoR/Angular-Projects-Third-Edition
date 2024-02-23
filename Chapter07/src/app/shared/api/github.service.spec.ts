@@ -2,8 +2,8 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { GithubService } from './github.service';
-import { exampleUser } from '../mocks/user-mocks';
-import { mockRepositories } from '../mocks/repository-list.mock';
+import { userMocked } from '../mocks/user-mocks';
+import { repositoriesMocked } from '../mocks/repository-list.mock';
 
 describe('GithubService', () => {
   let service: GithubService;
@@ -29,22 +29,22 @@ describe('GithubService', () => {
   it('should retrieve the user data', () => {
     const apiUrl = 'https://api.github.com/users/ricardo-roguez';
     service.getUser().subscribe(user => {
-      expect(user).toEqual(exampleUser);
+      expect(user).toEqual(userMocked);
     });
     
     const request = httpMock.expectOne(req => req.url === apiUrl);
     expect(request.request.method).toBe('GET');
-    request.flush(exampleUser);
+    request.flush(userMocked);
   });
   
   it('should retrieve the repos data', () => {
     const apiUrl = 'https://api.github.com/users/ricardo-roguez/repos';
     service.getRepos().subscribe(repositoryList => {
-      expect(repositoryList).toEqual(mockRepositories);
+      expect(repositoryList).toEqual(repositoriesMocked);
     });
     
     const request = httpMock.expectOne(req => req.url === apiUrl);
     expect(request.request.method).toBe('GET');
-    request.flush(mockRepositories);
+    request.flush(repositoriesMocked);
   });
 });

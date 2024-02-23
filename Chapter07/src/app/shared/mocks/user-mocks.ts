@@ -1,6 +1,6 @@
 ﻿import { User } from '../domain/user';
 
-export const exampleUser: User = 
+export const userMocked: User = 
 {
     avatar_url: "https://avatars.githubusercontent.com/u/120378561?v=4",
     name: "Ricardo Rodríguez",

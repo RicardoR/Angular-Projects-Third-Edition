@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 
 import { PersonalInfoComponent } from './personal-info.component';
 import { GithubService } from '../../shared/api/github.service';
-import { exampleUser } from '../../shared/mocks/user-mocks';
+import { userMocked } from '../../shared/mocks/user-mocks';
 
 describe('PersonalInfoComponent', () => {
   let component: PersonalInfoComponent;
@@ -19,7 +19,7 @@ describe('PersonalInfoComponent', () => {
     .compileComponents();
 
     githubService = TestBed.inject(GithubService) as jasmine.SpyObj<GithubService>;
-    githubService.getUser.and.returnValue(of(exampleUser));
+    githubService.getUser.and.returnValue(of(userMocked));
     fixture = TestBed.createComponent(PersonalInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -30,16 +30,16 @@ describe('PersonalInfoComponent', () => {
   });
 
   it('should retrieve the user data', () => {
-    expect(component.userData()).toEqual(exampleUser);
+    expect(component.userData()).toEqual(userMocked);
   });
 
   it('should display the info in the view', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.card-title')?.textContent).toBe(exampleUser.name);
-    expect(compiled.querySelector('.card-text')?.textContent?.trim()).toBe(exampleUser.bio);
-    expect(compiled.querySelector('.location-data')?.textContent?.trim()).toBe(exampleUser.location);
-    expect(compiled.querySelector('.followers-data')?.textContent?.trim()).toBe(exampleUser.followers);
-    expect(compiled.querySelector('.personal-blog')?.getAttribute('href')).toBe(exampleUser.blog);
+    expect(compiled.querySelector('.card-title')?.textContent).toBe(userMocked.name);
+    expect(compiled.querySelector('.card-text')?.textContent?.trim()).toBe(userMocked.bio);
+    expect(compiled.querySelector('.location-data')?.textContent?.trim()).toBe(userMocked.location);
+    expect(compiled.querySelector('.followers-data')?.textContent?.trim()).toBe(userMocked.followers);
+    expect(compiled.querySelector('.personal-blog')?.getAttribute('href')).toBe(userMocked.blog);
   });
 });

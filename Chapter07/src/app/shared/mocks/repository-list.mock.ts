@@ -1,6 +1,6 @@
 ﻿import { Repository } from '../domain/repository';
 
-export const mockRepositories: Repository[] = [
+export const repositoriesMocked: Repository[] = [
     {
         name: "example-repo-1",
         html_url: "https://github.com/example/example-repo-1",
