@@ -1,5 +1,6 @@
-import { Component, Signal, signal } from '@angular/core';
-import { Repository } from '../../shared/domain/repository';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { GithubService } from '../../shared/api/github.service';
 
 @Component({
   selector: 'app-repositories',
@@ -9,5 +10,6 @@ import { Repository } from '../../shared/domain/repository';
   styleUrl: './repositories.component.scss'
 })
 export class RepositoriesComponent {
-  repositoryList!: Signal<Repository[]>;
+  private githubService = inject(GithubService);
+  repositoryList = toSignal(this.githubService.getRepos());
 }
