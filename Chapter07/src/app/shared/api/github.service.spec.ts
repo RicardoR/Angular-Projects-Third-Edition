@@ -4,11 +4,14 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { GithubService } from './github.service';
 import { userMocked } from '../mocks/user-mocks';
 import { repositoriesMocked } from '../mocks/repository-list.mock';
+import { organizationListMocked } from '../mocks/organization-list.mock';
+
+const apiUrlBase = 'https://api.github.com/users/ricardo-roguez';
 
 describe('GithubService', () => {
   let service: GithubService;
   let httpMock: HttpTestingController;
-  
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
@@ -31,20 +34,29 @@ describe('GithubService', () => {
     service.getUser().subscribe(user => {
       expect(user).toEqual(userMocked);
     });
-    
-    const request = httpMock.expectOne(req => req.url === apiUrl);
+
+    const request = httpMock.expectOne(req => req.url === apiUrlBase);
     expect(request.request.method).toBe('GET');
     request.flush(userMocked);
   });
-  
+
   it('should retrieve the repos data', () => {
-    const apiUrl = 'https://api.github.com/users/ricardo-roguez/repos';
     service.getRepos().subscribe(repositoryList => {
       expect(repositoryList).toEqual(repositoriesMocked);
     });
-    
-    const request = httpMock.expectOne(req => req.url === apiUrl);
+
+    const request = httpMock.expectOne(req => req.url === `${apiUrlBase}/repos`);
     expect(request.request.method).toBe('GET');
     request.flush(repositoriesMocked);
+  });
+
+  it('should retrieve the organizations data', () => {
+    service.getOrganizations().subscribe(organization => {
+      expect(organization).toEqual(organizationListMocked)
+    });
+
+    const request = httpMock.expectOne((req) => req.url === `${apiUrlBase}/orgs`);
+    expect(request.request.method).toBe('GET');
+    request.flush(organizationListMocked);
   });
 });
