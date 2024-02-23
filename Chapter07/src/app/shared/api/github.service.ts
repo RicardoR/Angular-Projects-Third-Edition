@@ -26,6 +26,6 @@ export class GithubService {
   }
 
   getOrganizations(): Observable<Organization[]> {
-    throw new Error('Method not implemented.');
+    return this.http.get<Organization[]>(`${this.userUrl}/orgs`);
   }
 }
