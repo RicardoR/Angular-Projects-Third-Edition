@@ -28,5 +28,6 @@ export const repositoriesMocked: Repository[] = [
         language: "Python",
         forks_count: 30
     },
-    // Add more mock repositories as needed
 ];
+
+export const repositoryNotForkedMocked = repositoriesMocked.filter(repo => !repo.fork);

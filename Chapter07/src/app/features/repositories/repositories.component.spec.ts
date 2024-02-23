@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RepositoriesComponent } from './repositories.component';
 import { GithubService } from '../../shared/api/github.service';
 import { of } from 'rxjs';
-import { repositoriesMocked } from '../../shared/mocks/repository-list.mock';
+import { repositoriesMocked, repositoryNotForkedMocked } from '../../shared/mocks/repository-list.mock';
 
 describe('RepositoriesComponent', () => {
   let component: RepositoriesComponent;
@@ -34,5 +34,10 @@ describe('RepositoriesComponent', () => {
   it('should retrieve the repositories from github service', () => {
     fixture.detectChanges();
     expect(component.repositoryList()).toEqual(repositoriesMocked)
+  });
+  
+  it('should filter the not forked repositories', () => {
+    fixture.detectChanges();
+    expect(component.ownRepos()).toEqual(repositoryNotForkedMocked)
   });
 });
