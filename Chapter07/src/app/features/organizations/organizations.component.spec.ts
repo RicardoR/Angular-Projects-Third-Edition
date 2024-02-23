@@ -33,5 +33,11 @@ describe('OrganizationsComponent', () => {
   it('should get the organizations from gitubService', () => {
     fixture.detectChanges();
     expect(component.organizationList()).toEqual(organizationListMocked);
-  })
+  });
+
+  it('should display the organizations in the view', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelectorAll('[data-test=card-org]').length).toBe(organizationListMocked.length);
+  });
 });
