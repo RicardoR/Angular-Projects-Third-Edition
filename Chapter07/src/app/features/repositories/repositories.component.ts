@@ -1,7 +1,6 @@
-import { Component, inject, Signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { GithubService } from '../../shared/api/github.service';
-import { Repository } from '../../shared/domain/repository';
 
 @Component({
   selector: 'app-repositories',
@@ -13,5 +12,5 @@ import { Repository } from '../../shared/domain/repository';
 export class RepositoriesComponent {
   private githubService = inject(GithubService);
   repositoryList = toSignal(this.githubService.getRepos());
-  ownRepos!: Signal<Repository[]>;
+  ownRepos = computed(() => this.repositoryList()?.filter(repo => !repo.fork));
 }
