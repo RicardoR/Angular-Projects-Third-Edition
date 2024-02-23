@@ -1,1 +1,17 @@
-<p>organizations works!</p>
+<app-panel caption="Organizations" icon="diagram-3">
+  <div class="list-group">
+    @for (org of organizationList(); track $index) {
+      <a href="https://www.github.com/{{org.login}}" data-test=card-org class="list-group-item list-group-item-action">
+        <div class="row">
+          <img [src]="org.avatar_url" alt="organization avatar">
+          <div class="col-sm-9">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{org.login}}</h5>
+          </div>
+          <p class="mb-1">{{org.description}}</p>
+        </div>
+        </div>
+      </a>
+    }
+  </div>
+</app-panel>
