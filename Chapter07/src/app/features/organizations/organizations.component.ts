@@ -1,5 +1,7 @@
-import { Component, Signal } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 import { Organization } from '../../shared/domain/organization';
+import { GithubService } from '../../shared/api/github.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-organizations',
@@ -9,5 +11,6 @@ import { Organization } from '../../shared/domain/organization';
   styleUrl: './organizations.component.scss'
 })
 export class OrganizationsComponent {
-  organizationList!: Signal<Organization[]>;
+  private githubService = inject(GithubService);
+  organizationList = toSignal(this.githubService.getOrganizations());
 }
