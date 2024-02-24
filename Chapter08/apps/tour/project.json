@@ -24,7 +24,7 @@
           "apps/tour/src/assets"
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/deeppurple-.css",
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
           "apps/tour/src/styles.css"
         ],
         "scripts": []
