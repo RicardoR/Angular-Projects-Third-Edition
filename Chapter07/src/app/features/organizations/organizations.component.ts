@@ -1,5 +1,4 @@
-import { Component, Signal, inject } from '@angular/core';
-import { Organization } from '../../shared/domain/organization';
+import { Component, inject } from '@angular/core';
 import { GithubService } from '../../shared/api/github.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PanelComponent } from "../panel/panel.component";

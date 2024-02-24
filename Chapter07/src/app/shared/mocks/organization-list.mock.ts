@@ -1,19 +1,7 @@
-import { Organization } from '../domain/organization';
+import { Organization } from '../domain/organization.model';
 
 export const organizationListMocked: Organization[] = [
-  {
-    login: 'org1',
-    description: 'Descripción de la organización 1',
-    avatar_url: 'url_avatar_1',
-  },
-  {
-    login: 'org2',
-    description: 'Descripción de la organización 2',
-    avatar_url: 'url_avatar_2',
-  },
-  {
-    login: 'org3',
-    description: 'Descripción de la organización 3',
-    avatar_url: 'url_avatar_3',
-  },
+  new Organization('org1', 'Descripción de la organización 1', 'url_avatar_1'),
+  new Organization('org2', 'Descripción de la organización 2', 'url_avatar_2'),
+  new Organization('org3', 'Descripción de la organización 3', 'url_avatar_3'),
 ];
