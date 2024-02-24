@@ -13,5 +13,11 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": ["src/**/*.ts"]
+  "include": [
+    "src/**/*.ts",
+    "index.ts",
+    "src/test-setup.ts",
+    "src/lib/visitor.component.spec.ts",
+    "src/lib/visitor.component.ts"
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/out-tsc",
+    "module": "commonjs",
+    "target": "es2016",
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "files": [
+    "visitor/src/test-setup.ts"
+  ],
+  "include": [
+    "jest.config.ts",
+    "visitor/src/**/*.test.ts",
+    "visitor/src/**/*.spec.ts",
+    "visitor/src/**/*.d.ts",
+    "visitor/src/lib/visitor.component.spec.ts"
+  ]
+}
