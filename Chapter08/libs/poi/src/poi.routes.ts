@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { PoiComponent } from './lib/poi/poi.component';
-import { provideStore, provideState } from '@ngrx/store';
+import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import * as fromPoi from './state/poi.reducer';
 import { PoiEffects } from './state/poi.effects';
