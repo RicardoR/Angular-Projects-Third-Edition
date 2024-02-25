@@ -22,7 +22,7 @@
         "libs/admin/src/index.ts"
       ],
       "@packt/visitor": [
-        "libs/visitor/index.ts"
+        "libs/visitor/src/index.ts"
       ]
     }
   },
