@@ -8,7 +8,6 @@ import { PoiSelectors } from '@packt/poi';
 describe('VisitorComponent', () => {
   let component: VisitorComponent;
   let fixture: ComponentFixture<VisitorComponent>;
-  let store: MockStore;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -24,7 +23,6 @@ describe('VisitorComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VisitorComponent);
     component = fixture.componentInstance;
-    store = TestBed.inject(MockStore);
     fixture.detectChanges();
   });
 
