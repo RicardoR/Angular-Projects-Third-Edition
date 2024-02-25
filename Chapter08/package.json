@@ -22,6 +22,8 @@
     "@ngrx/router-store": "~17.0.0",
     "@ngrx/store": "~17.0.0",
     "@nx/angular": "18.0.5",
+    "chart.js": "^4.4.1",
+    "ng2-charts": "^5.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
