@@ -3,7 +3,7 @@ import { Route } from '@angular/router';
 export const appRoutes: Route[] = [
   {
     path: 'tour',
-    loadComponent: () => import('@packt/visitor').then((c) => c.VisitorComponent),
+    loadChildren: () => import('@packt/visitor').then((c) => c.VisitorRoutes),
   },
   {
     path: 'admin',
