@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { PoiListComponent } from "../poi-list/poi-list.component";
+import { MapComponent } from "../map/map.component";
 
 @Component({
     selector: 'packt-visitor',
@@ -22,7 +23,8 @@ import { PoiListComponent } from "../poi-list/poi-list.component";
         MatListModule,
         MatIconModule,
         AsyncPipe,
-        PoiListComponent
+        PoiListComponent,
+        MapComponent
     ]
 })
 export class VisitorComponent {
