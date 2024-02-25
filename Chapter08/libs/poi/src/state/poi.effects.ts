@@ -2,7 +2,6 @@ import { Injectable, inject } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, catchError, of } from 'rxjs';
 import * as PoiActions from './poi.actions';
-import * as PoiFeature from './poi.reducer';
 import { PoiService } from '../lib/poi.service';
 
 @Injectable()
