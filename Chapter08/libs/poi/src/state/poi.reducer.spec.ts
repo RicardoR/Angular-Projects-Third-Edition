@@ -8,6 +8,10 @@ describe('Poi Reducer', () => {
   const createPoiEntity = (id: string, name = ''): PoiEntity => ({
     id,
     name: name || `name-${id}`,
+    description: 'test description',
+    lat: 12,
+    lng: 23,
+    imgUrl: 'dummy url'
   });
 
   describe('valid Poi actions', () => {

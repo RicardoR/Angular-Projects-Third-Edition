@@ -30,7 +30,6 @@ describe('GithubService', () => {
   });
 
   it('should retrieve the user data', () => {
-    const apiUrl = 'https://api.github.com/users/ricardo-roguez';
     service.getUser().subscribe(user => {
       expect(user).toEqual(userMocked);
     });
