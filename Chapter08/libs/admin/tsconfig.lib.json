@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/out-tsc",
+    "outDir": "../../dist/out-tsc",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
@@ -13,11 +13,5 @@
     "jest.config.ts",
     "src/**/*.test.ts"
   ],
-  "include": [
-    "src/**/*.ts",
-    "index.ts",
-    "src/test-setup.ts",
-    "src/lib/visitor.component.spec.ts",
-    "src/lib/visitor.component.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }
