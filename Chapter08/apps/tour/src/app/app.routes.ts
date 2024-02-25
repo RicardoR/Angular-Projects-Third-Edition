@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'admin',
-    loadComponent: () => import('@packt/admin').then(c => c.AdminComponent)
+    loadChildren: () => import('@packt/admin').then(c => c.AdminRoutes)
   },
   {
     path: '',
