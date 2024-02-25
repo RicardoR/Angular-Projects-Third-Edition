@@ -1,1 +1,5 @@
-<p>poi-list works!</p>
+@for (poi of pois(); track $index) {
+  <mat-action-list>
+    <button mat-list-item> {{ poi.name }} </button>
+  </mat-action-list>
+}
