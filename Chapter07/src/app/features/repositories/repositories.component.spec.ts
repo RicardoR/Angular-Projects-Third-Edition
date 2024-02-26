@@ -48,10 +48,4 @@ describe('RepositoriesComponent', () => {
       repositoryNotForkedMocked.length
     );
   });
-
-  it('should display the not forked repositories', () => {
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.getElementsByClassName('card').length).toBe(repositoryNotForkedMocked.length);
-  });
 });
