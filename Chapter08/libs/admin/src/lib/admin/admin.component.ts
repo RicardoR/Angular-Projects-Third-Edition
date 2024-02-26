@@ -1,11 +1,10 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { PoiSelectors, PoiActions, PoiEntity } from '@packt/poi';
-import { Subscription } from 'rxjs';
-import { ChartDataset, ChartOptions } from 'chart.js';
 import { AdminService } from '../admin.service';
 import { NgChartsModule } from 'ng2-charts';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'packt-admin',
@@ -14,39 +13,27 @@ import { NgChartsModule } from 'ng2-charts';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
 })
-export class AdminComponent implements OnInit, OnDestroy {
-  private subscription: Subscription | undefined;
-  dataSets: ChartDataset[] = [];
-  labels: string[] = [];
+export class AdminComponent {
+  private store = inject(Store);
+  private adminService = inject(AdminService);
+  private allPoiSelected =  toSignal(this.store.select(PoiSelectors.selectAllPoi), {initialValue: []});
+  
+  dataSets = computed(() => this.buildChart(this.allPoiSelected()));
+  labels = computed(() => this.allPoiSelected().map((poi) => poi.name));
 
-  public pieChartOptions = {
+  pieChartOptions = {
     responsive: false,
   };
-  constructor(
-    private store: Store,
-    private adminService: AdminService,
-    private changeDetectorRef: ChangeDetectorRef
-  ) {}
-
-  ngOnInit(): void {
-    this.subscription = this.store
-      .select(PoiSelectors.selectAllPoi)
-      .subscribe((pois) => this.buildChart(pois));
+   
+  constructor() {
     this.store.dispatch(PoiActions.initPoi());
   }
-  ngOnDestroy() {
-    this.subscription?.unsubscribe();
-  }
 
-  private buildChart(pois: PoiEntity[]) {
-    this.labels = pois.map((poi) => poi.name);
-    this.dataSets = [
+  private buildChart(poi: PoiEntity[]) {
+    return [
       {
-        data: this.adminService.getStatistics(pois),
+        data: this.adminService.getStatistics(poi),
       },
     ];
-    console.log(this.dataSets);
-
-    this.changeDetectorRef.detectChanges();
   }
 }

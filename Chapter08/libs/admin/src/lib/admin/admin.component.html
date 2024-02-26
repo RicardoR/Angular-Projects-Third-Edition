@@ -1,10 +1,12 @@
-<div class="chart" *ngIf="dataSets.length">
-  <canvas
-    height="100"
-    baseChart
-    [options]="pieChartOptions"
-    [datasets]="dataSets"
-    [labels]="labels"
-    type="pie">
-  </canvas>
-</div>
+@if(dataSets().length) {
+    <div class="chart">
+        <canvas
+            height="200"
+            baseChart
+            [options]="pieChartOptions"
+            [datasets]="dataSets()"
+            [labels]="labels()"
+            type="pie">
+        </canvas>
+    </div>
+}
