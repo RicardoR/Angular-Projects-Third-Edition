@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Card } from '../domain/card';
 
 @Component({
   selector: 'lib-card-list',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './card-list.component.css'
 })
 export class CardListComponent {
-
+  cards = input<Card[]>([]);
 }
