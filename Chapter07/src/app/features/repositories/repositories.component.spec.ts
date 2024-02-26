@@ -19,7 +19,7 @@ describe('RepositoriesComponent', () => {
       ]
     })
     .compileComponents();
-    
+
     githubService = TestBed.inject(GithubService) as jasmine.SpyObj<GithubService>;
     githubService.getRepos.and.returnValue(of(repositoriesMocked));
     fixture = TestBed.createComponent(RepositoriesComponent);
@@ -35,10 +35,18 @@ describe('RepositoriesComponent', () => {
     fixture.detectChanges();
     expect(component.repositoryList()).toEqual(repositoriesMocked)
   });
-  
+
   it('should filter the not forked repositories', () => {
     fixture.detectChanges();
-    expect(component.ownRepos()).toEqual(repositoryNotForkedMocked)
+    expect(component.ownRepos()).toEqual(repositoryNotForkedMocked);
+  });
+
+  it('should display the list of the non forked repos', () => {
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelectorAll('[data-test=card-repo]').length).toBe(
+      repositoryNotForkedMocked.length
+    );
   });
 
   it('should display the not forked repositories', () => {

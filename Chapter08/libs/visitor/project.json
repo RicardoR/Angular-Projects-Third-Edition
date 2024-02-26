@@ -1,0 +1,9 @@
+{
+  "name": "visitor",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/visitor/src",
+  "prefix": "packt",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

@@ -1,0 +1,9 @@
+{
+  "name": "poi",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/poi/src",
+  "prefix": "packt",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}
