@@ -1,1 +1,15 @@
-<p>card-list works!</p>
+<div>
+    @for (card of cards(); track $index) {
+        <div class="card md-4" data-test=card>
+            <header class="card-header">
+                <p class="card-header-title">{{card.title}}</p>
+            </header>
+            <div class="card-content">
+                <div class="content">{{card.description}}</div>
+            </div>
+            <footer class="card-footer">
+                <a [href]="card.link" class="card-footer-item">View on Wikipedia</a>
+            </footer>
+        </div>
+    }
+</div>
