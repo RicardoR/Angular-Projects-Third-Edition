@@ -14,7 +14,7 @@ describe('CardListComponent', () => {
     .compileComponents();
     
     fixture = TestBed.createComponent(CardListComponent);
-    fixture.componentRef.setInput('cards', cardsListMock)
+    fixture.componentRef.setInput('cards', [...cardsListMock]);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -28,11 +28,9 @@ describe('CardListComponent', () => {
     expect(compiled.querySelectorAll('[data-test=card]').length).toBe(cardsListMock.length);
   });
 
-  it('should emit the new card position when sortCads is called', () => {
-    const emitSpy = spyOn(component.cardChange, 'emit');
-    const cardList = ['Card 2', 'Card 3', 'Card 1'];
-    const myEvent = cardList as unknown as CdkDragDrop<string[]>;
+  it('should move the cards', () => {
+    const myEvent = { currentIndex: 1, previousIndex: 0 } as CdkDragDrop<string[]>;
     component.sortCards(myEvent);
-    expect(emitSpy).toHaveBeenCalledWith(component.cards());
+    expect(component.cards()[0]).toEqual(cardsListMock[1]);
   });
 });
