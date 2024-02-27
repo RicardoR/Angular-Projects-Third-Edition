@@ -12,4 +12,8 @@ import { assassins } from './assassins';
 })
 export class AppComponent {
   cards = signal<Card[]>(assassins);
+
+  onChange() {
+    console.log(this.cards());
+  }
 }
