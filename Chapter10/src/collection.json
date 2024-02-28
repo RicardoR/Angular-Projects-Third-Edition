@@ -4,6 +4,10 @@
     "my-schematics": {
       "description": "A blank schematic.",
       "factory": "./my-schematics/index#mySchematics"
+    },
+    "tailwind-container": {
+      "description": "A blank schematic.",
+      "factory": "./tailwind-container/index#tailwindContainer"
     }
   }
 }
