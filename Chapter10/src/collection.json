@@ -6,8 +6,9 @@
       "factory": "./my-schematics/index#mySchematics"
     },
     "tailwind-container": {
-      "description": "A blank schematic.",
-      "factory": "./tailwind-container/index#tailwindContainer"
+      "description": "Generate a TAilwind container component.",
+      "factory": "./tailwind-container/index#tailwindContainer",
+      "schema": "./tailwind-container/schema.json"
     }
   }
 }
